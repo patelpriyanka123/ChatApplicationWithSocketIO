@@ -1,0 +1,78 @@
+<div class="container border py-3 my-3">
+    <div class="card">
+        <h4 class="card-header">Register</h4>
+        <div class="card-body">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="firstName">First Name</label>
+                    <div class="input-group h-100 col-sm-7 mb-0">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <input type="text" formControlName="firstName" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+                        <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                            <span *ngIf="f.firstName.errors.required">First Name is required</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name</label>
+                    <div class="input-group h-100 col-sm-7 mb-0">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <input type="text" formControlName="lastName" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+                        <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                            <span *ngIf="f.lastName.errors.required">Last Name is required</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="userName">Username</label>
+                    <div class="input-group h-100 col-sm-7 mb-0">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <i class="fa fa-user" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <input type="text" formControlName="userName" class="form-control"
+                            [ngClass]="{ 'is-invalid': submitted && f.userName.errors }" />
+                        <div *ngIf="submitted && f.userName.errors" class="invalid-feedback">
+                            <span *ngIf="f.userName.errors.required">Username is required</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-group h-100 col-sm-7 mb-0">
+                        <input [type]="fieldTextType ? 'text' : 'password'" class="form-control" id="password"
+                            name="password" formControlName="password"
+                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                        <div id="pwdShowHide" class="input-group-append" (click)="toggleFieldTextType()">
+                            <span class="input-group-text">
+                                <i [ngClass]="!fieldTextType ? 'fa fa-eye-slash': 'fa fa-eye'" aria-hidden="true"></i>
+                            </span>
+                        </div>
+                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                            <span *ngIf="f.password.errors.required">Password is required</span>
+                            <span *ngIf="f.password.errors.minlength">Password must be at least 6 characters</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group mt-3">
+                    <button type="submit" [disabled]="loading" class="btn btn-primary">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        Register
+                    </button>
+                    <a routerLink="../login" class="btn btn-link">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="card">
+    <div class="user-list card">
+        <div class="input-group">            
+            <input type="text" class="form-control" placeholder="Search..."> 
+            <button class="btn btn-primary"><i class="fa fa-search"></i></button>     
+        </div>
+        <ul class="list-unstyled chat-list mt-2 mb-0" *ngFor="let user of userList;">
+            <li class="clearfix" (click)="onUserClick(user)">
+                <img src="https://bootdey.com/img/Content/avatar/avatar{{user.userId}}.png" alt="avatar">
+                <div class="about">
+                    <div class="name">{{user.userName}}</div>
+                    <div class="status"><i class="fa fa-circle" [ngClass]="user.isLoggedIn ?'online':'offline'"></i> 
+                        <span *ngIf="user.isLoggedIn">Online</span>
+                        <span *ngIf="!user.isLoggedIn">Offline</span>
+                    </div>
+                </div>
+            </li>         
+        </ul>
+    </div>
+</div>

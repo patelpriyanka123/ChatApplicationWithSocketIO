@@ -1,0 +1,72 @@
+
+.user-list { 
+    width: 280px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 20px;
+    z-index: 7;   
+    -moz-transition: .5s;
+    -o-transition: .5s;
+    -webkit-transition: .5s;
+    transition: .5s
+}
+
+.user-list .chat-list li {
+    padding: 10px 15px;
+    list-style: none;
+    border-radius: 3px
+}
+
+.user-list .chat-list li:hover {
+    background: #efefef;
+    cursor: pointer
+}
+
+.user-list .chat-list li.active {
+    background: #efefef
+}
+
+.user-list .chat-list li .name {
+    font-size: 15px
+}
+
+.user-list .chat-list img {
+    width: 45px;
+    border-radius: 50%
+}
+
+.user-list img {
+    float: left;
+    border-radius: 50%
+}
+
+.user-list .about {
+    float: left;
+    padding-left: 8px
+}
+
+.user-list .status {
+    color: #999;
+    font-size: 13px
+}
+
+.online,
+.offline,
+.me {
+    margin-right: 2px;
+    font-size: 8px;
+    vertical-align: middle
+}
+
+.online {
+    color: #86c541
+}
+
+.offline {
+    color: #e47297
+}
+
+.me {
+    color: #1d8ecd
+}

@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-lg-12">
+            <div class="card chat-app">
+                <app-user-list></app-user-list>
+                <div class="chat" *ngIf="userData.userId">
+                    <div class="chat-header clearfix">
+                        <app-chat-header></app-chat-header>
+                    </div>
+                    <div class="chat-history">
+                        <app-chat-history></app-chat-history>
+                    </div>
+                    <div class="chat-message clearfix">
+                        <app-chat-message></app-chat-message>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="history">
+    <ul class="m-b-0">
+        <li class="clearfix" *ngFor="let userMsg of messageList">
+            <div class="message-data" [ngClass]="{'text-right':userMsg.senderId === loggedInUser[0].userId}">
+                <span class="message-data-time"> {{userMsg.datetime | date: 'h:mm a dd-MM-yyyy'}}</span>              
+            </div>
+            <div class="message other-message" [ngClass]="{'float-right':userMsg.senderId === loggedInUser[0].userId}"> {{userMsg.message}}</div>
+        </li>
+    </ul>
+</div>

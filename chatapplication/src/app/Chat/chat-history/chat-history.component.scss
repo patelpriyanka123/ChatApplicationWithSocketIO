@@ -1,0 +1,84 @@
+.history ul {
+    padding: 0
+}
+
+.history ul li {
+    list-style: none;
+    margin-bottom: 30px
+}
+
+.history ul li:last-child {
+    margin-bottom: 0px
+}
+
+.history .message-data {
+    margin-bottom: 15px
+}
+
+.history .message-data img {
+    border-radius: 40px;
+    width: 40px
+}
+
+.history .message-data-time {
+    color: #434651;
+    padding-left: 6px
+}
+
+.history .message {
+    color: #444;
+    padding: 18px 20px;
+    line-height: 26px;
+    font-size: 16px;
+    border-radius: 7px;
+    display: inline-block;
+    position: relative
+}
+
+.history .message:after {
+    bottom: 100%;
+    left: 7%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: #fff;
+    border-width: 10px;
+    margin-left: -10px
+}
+
+.history .my-message {
+    background: #efefef
+}
+
+.history .my-message:after {
+    bottom: 100%;
+    left: 30px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-bottom-color: #efefef;
+    border-width: 10px;
+    margin-left: -10px
+}
+
+.history .other-message {
+    background: #e8f1f3;
+    text-align: right
+}
+
+.history .other-message:after {
+    border-bottom-color: #e8f1f3;
+    left: 93%
+}
+.float-right {
+    float: right
+}
+.text-right{
+    text-align: right;
+}
