@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { User } from 'src/app/model/user';
+import { userList } from 'src/app/model/userList';
 import { UserService } from 'src/app/Service/user.service';
 
 @Component({
@@ -10,25 +11,7 @@ import { UserService } from 'src/app/Service/user.service';
 export class UserListComponent implements OnInit {
   counter: number = 1;
   loggedIn: string = '';
-  userList = [
-    {
-      firstName: "Priyanka",
-      isLoggedIn: true,
-      lastName: "Patel",
-      password: "123456",
-      userId: 1,
-      userName: "Priyanka",
-   },
-   {
-    firstName: "Ravina",
-    isLoggedIn: true,
-    lastName: "Patel",
-    password: "123456",
-    userId: 2,
-    userName: "Ravina",
-   }
-  ]
-
+  userDetailsList: Array<User>=[];
   constructor(private user: UserService ) { }
 
   ngOnInit(): void {
@@ -45,7 +28,7 @@ export class UserListComponent implements OnInit {
   getUserList() {
     // const data = JSON.parse(localStorage.getItem("registerUser") as any) || [];
     const loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUserDetail") as any);
-    this.userList = this.userList.filter((result:User) => result.userName !== loggedInUser[0].userName); 
+    this.userDetailsList = userList.filter((result:User) => result.userName !== loggedInUser[0].userName); 
   }
 
 }

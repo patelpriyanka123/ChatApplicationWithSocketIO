@@ -4,7 +4,7 @@
             <input type="text" class="form-control" placeholder="Search..."> 
             <button class="btn btn-primary"><i class="fa fa-search"></i></button>     
         </div>
-        <ul class="list-unstyled chat-list mt-2 mb-0" *ngFor="let user of userList;">
+        <ul class="list-unstyled chat-list mt-2 mb-0" *ngFor="let user of userDetailsList;">
             <li class="clearfix" (click)="onUserClick(user)">
                 <img src="https://bootdey.com/img/Content/avatar/avatar{{user.userId}}.png" alt="avatar">
                 <div class="about">

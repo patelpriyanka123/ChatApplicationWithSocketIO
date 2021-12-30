@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/model/user'
+import { userList } from 'src/app/model/userList';
 import swal from 'sweetalert2';
 
 @Component({
@@ -14,26 +15,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   fieldTextType = false;
   loading = false;
-  loggedInUser: any;  
-
-  userList = [
-    {
-      firstName: "Priyanka",
-      isLoggedIn: false,
-      lastName: "Patel",
-      password: "123456",
-      userId: 1,
-      userName: "Priyanka",
-   },
-   {
-    firstName: "Ravina",
-    isLoggedIn: true,
-    lastName: "Patel",
-    password: "123456",
-    userId: 2,
-    userName: "Ravina",
-   }
-  ]
+  loggedInUser: any;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private route: ActivatedRoute) { }
 
@@ -62,9 +44,9 @@ export class LoginComponent implements OnInit {
     } else {
       const userName = this.loginForm.controls.userName.value;
       const password = this.loginForm.controls.password.value;
-     // const data = JSON.parse(localStorage.getItem("registerUser") as any) || [];
-      const user = this.userList.filter((result: User) => result.userName === userName && result.password === password);
-      if(user.length > 0 ) {
+      // const data = JSON.parse(localStorage.getItem("registerUser") as any) || [];
+      const user = userList.filter((result: User) => result.userName === userName && result.password === password);
+      if (user.length > 0) {
         this.loading = false;
         user[0].isLoggedIn = true;
         // localStorage.setItem('registerUser', JSON.stringify(data));
@@ -75,8 +57,8 @@ export class LoginComponent implements OnInit {
           title: 'Invalid username or password!',
           type: 'error'
         });
-        this.loading = false;       
-      }      
+        this.loading = false;
+      }
     }
   }
 }
