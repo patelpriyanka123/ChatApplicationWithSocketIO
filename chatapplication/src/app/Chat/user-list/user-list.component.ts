@@ -13,9 +13,9 @@ export class UserListComponent implements OnInit {
   counter: number = 1;
   loggedIn: string = '';
   userDetailsList: Array<User>=[];
-  constructor(private user: UserService, private chatService: ChatService ) { }
+  constructor(private user: UserService ,private chatService: ChatService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.getUserList();
     window.addEventListener('storage', () => {
       this.getUserList();

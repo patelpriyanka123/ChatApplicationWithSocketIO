@@ -18,10 +18,18 @@ export class LoginComponent implements OnInit {
   fieldTextType = false;
   loading = false;
   loggedInUser: any;
+  userList=[]
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private route: ActivatedRoute, private chatService: ChatService) { }
+
+  constructor(private formBuilder: FormBuilder, private router: Router, private chatService: ChatService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.chatService.getUserList().subscribe((userList: Array<User>) => {
+      if(userList){
+       console.log(userList)
+      }
+     
+    })
     this.loginForm = this.formBuilder.group({
       userName: ['', [Validators.required, Validators.maxLength(10)]],
       password: ['', [Validators.required, Validators.minLength(6)]]
@@ -52,7 +60,7 @@ export class LoginComponent implements OnInit {
         this.loading = false;
         user[0].isLoggedIn = true;
         const socket =io();
-        this.chatService.sendUser(user[0]);    
+        this.chatService.sendUser(user[0]);       
         // localStorage.setItem('registerUser', JSON.stringify(data));
         sessionStorage.setItem('loggedInUserDetail', JSON.stringify(user));
         this.router.navigate(['/chat-box']);

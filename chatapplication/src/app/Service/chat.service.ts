@@ -10,6 +10,7 @@ import { User } from '../model/user';
 export class ChatService {
   public message$: BehaviorSubject<SendReceiveMsg> = new BehaviorSubject(new SendReceiveMsg());
   public user$: BehaviorSubject<User> = new BehaviorSubject(new User());
+  public userList$: BehaviorSubject<Array<User>> = new BehaviorSubject(new Array<User>());
   constructor() {}
 
   socket = io('http://localhost:3000');
@@ -24,7 +25,7 @@ export class ChatService {
 
   public getUser = () => {
     this.socket.on('user', (user) =>{
-      this.message$.next(user);
+      this.user$.next(user);
     });
     
     return this.user$.asObservable();
@@ -36,5 +37,15 @@ export class ChatService {
     });
     
     return this.message$.asObservable();
+  };  
+
+
+  public getUserList = () => {
+    this.socket.on('userList', (userList) =>{
+      this.userList$.next(userList);
+    });
+    
+    return this.userList$.asObservable();
   };
+
 }
