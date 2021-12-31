@@ -5,12 +5,13 @@ const io = require('socket.io')(httpServer, {
 });
 
 const port = process.env.PORT || 3000;
-
+const users={};
 io.on('connection', (socket) => {
   console.log('a user connected');
 
   socket.on('user', (user) => {
     console.log(user);
+   // users[socket.id] = user;
     io.emit('user', user);
   });
 
@@ -21,6 +22,10 @@ io.on('connection', (socket) => {
 
   socket.on('disconnect', () => {
     console.log('a user disconnected!');
+    // if(users[socket.id]) {
+    //   users[socket.id].isLoggedIn= false;
+    //   io.emit('user', users[socket.id]);
+    // }  
   });
 });
 

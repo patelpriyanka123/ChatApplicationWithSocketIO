@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { io } from 'socket.io-client';
 import { User } from 'src/app/model/user'
 import { userList } from 'src/app/model/userList';
+import { ChatService } from 'src/app/Service/chat.service';
 import swal from 'sweetalert2';
 
 @Component({
@@ -17,7 +19,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   loggedInUser: any;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private route: ActivatedRoute) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private route: ActivatedRoute, private chatService: ChatService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -49,6 +51,8 @@ export class LoginComponent implements OnInit {
       if (user.length > 0) {
         this.loading = false;
         user[0].isLoggedIn = true;
+        const socket =io();
+        this.chatService.sendUser(user[0]);    
         // localStorage.setItem('registerUser', JSON.stringify(data));
         sessionStorage.setItem('loggedInUserDetail', JSON.stringify(user));
         this.router.navigate(['/chat-box']);
