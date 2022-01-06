@@ -11,8 +11,11 @@ const users={};
 io.on('connection', (socket) => {
   console.log('a user connected'); 
   socket.on('user', (user) => {   
+    // callback(false);
+    // users = user;
     // users[socket.id] = user;
     // console.log(users[socket.id]);
+    console.log(user);
     io.emit('user', user);
   });
 

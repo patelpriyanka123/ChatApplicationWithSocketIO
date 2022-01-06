@@ -18,12 +18,13 @@ export class LoginComponent implements OnInit {
   fieldTextType = false;
   loading = false;
   loggedInUser: any;
-  userList=[]
+  registeredUserList : any[] = [];
 
 
   constructor(private formBuilder: FormBuilder, private router: Router, private chatService: ChatService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.registeredUserList = userList;
     this.chatService.getUserList().subscribe((userList: Array<User>) => {
       if(userList){
        console.log(userList)

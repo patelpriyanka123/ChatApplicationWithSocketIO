@@ -42,9 +42,31 @@
                         <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                         Login
                     </button>
-                    <a routerLink="../registration" class="btn btn-link">Register</a>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+
+<br/><br/>
+<div class="container border py-3 my-3">
+    <div class="card">
+        <h4 class="card-header">Below are the valid username and password for login</h4>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="UserName">User Name</th>
+                        <th scope="Password">Password</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of registeredUserList">
+                        <td>{{ user.userName }}</td>
+                        <td>{{ user.password }}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

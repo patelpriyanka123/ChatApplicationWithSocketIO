@@ -20,25 +20,22 @@ export class UserListComponent implements OnInit {
     window.addEventListener('storage', () => {
       this.getUserList();
     });
-    this.chatService.getUser().subscribe((user: User) => {
-      if(user){
-        const usr = this.userDetailsList.filter((result:User) => result.userId === user.userId);
-        if(usr.length>0){
-          usr[0].isLoggedIn= user.isLoggedIn;
-        }
-      }
-     
-    })
-  }
-
-  onUserClick(user: any) {
-    this.user.usernameSource.next(user);
-  }
-
-  getUserList() {
-    // const data = JSON.parse(localStorage.getItem("registerUser") as any) || [];
     const loggedInUser = JSON.parse(sessionStorage.getItem("loggedInUserDetail") as any);
     this.userDetailsList = userList.filter((result:User) => result.userName !== loggedInUser[0].userName); 
   }
 
+  getUserList() {
+  this.chatService.getUser().subscribe((user: User) => {
+    if(user){
+      const usr = userList.filter((result:User) => result.userId === user.userId);
+      if(usr.length>0){
+        usr[0].isLoggedIn= user.isLoggedIn;
+      }
+    }
+  });
+}
+
+  onUserClick(user: any) {
+    this.user.usernameSource.next(user);
+  }
 }

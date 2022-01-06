@@ -4,7 +4,7 @@ export const userList = [
       firstName: "Priyanka",
       lastName: "Patel",
       userName: "Priyanka",
-      password: "123456",
+      password: "priya@1234",
       isLoggedIn: false
     },
     {
@@ -12,7 +12,7 @@ export const userList = [
       firstName: "Ravina",
       lastName: "Patel",
       userName: "Ravina",
-      password: "123456",
+      password: "A@pqrtuv",
       isLoggedIn: false
     },
     {
@@ -20,7 +20,7 @@ export const userList = [
       firstName: "Parth",
       lastName: "Patel",
       userName: "Parth",
-      password: "123456",
+      password: "r12@abc",
       isLoggedIn: false
     },
     {
@@ -28,7 +28,7 @@ export const userList = [
       firstName: "Ujwal",
       lastName: "Patel",
       userName: "Ujwal",
-      password: "123456",
+      password: "uj@1234",
       isLoggedIn: false
     }
   ]
